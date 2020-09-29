@@ -1,3 +1,15 @@
+import Amplify, { API, graphqlOperation } from "@aws-amplify/api";
+
+const myAppConfig = {
+    
+  'aws_appsync_graphqlEndpoint': 'https://llooottqxzcr5pechf7ugnzsmu.appsync-api.us-east-2.amazonaws.com/graphql',
+  'aws_appsync_region': 'us-east-2',
+  'aws_appsync_authenticationType': 'API_KEY',
+  'aws_appsync_apiKey': 'da2-f3cuupn6cjb23aqmk5lc7uw6ma',
+  
+}
+
+Amplify.configure(myAppConfig);
 document.addEventListener('DOMContentLoaded', () => {
 
     loadproducts();

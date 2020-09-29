@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Octank Global Ecommerce",
   "dependencies": {
-    "aws-amplify": "latest"
+    "aws-amplify": "^3.3.2"
   },
   "devDependencies": {
     "webpack": "^4.17.1",

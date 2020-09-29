@@ -1,1 +1,16 @@
-{}
+{
+  "auth": {
+    "octankretail297af368": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "ABstore2121": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
