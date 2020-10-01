@@ -43,38 +43,6 @@
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
-
-	<script id="load_products" type="text/x-handlebars-template">
-		<div class="col-md-3">
-			<div class="single-product">
-		  		<div class="product-img">
-					<a href="product-details.html">
-						<img class="default-img" src="{{ image }}" alt="#">
-						<img class="hover-img" src="{{ image }}" alt="#">
-					</a>
-					<div class="button-head">
-						<div class="product-action-2">
-							{{#if inventory}}
-							<a title="Add to cart" href="#">{{inventory}} items left!</a>
-							{{else}}
-							<a title="Add to cart" href="#">Sold Out!</a>
-							{{/if}}
-						</div>
-					</div>
-				</div>
-				<div class="product-content">
-					<h4><a href="">{{{ title }}}</a></h4>
-					<p><a href="">{{{ description }}}</a></p>
-					<div class="product-price">
-						<span>${{{ price }}}</span><br><br>
-						{{#if inventory}}
-						<a href="" class="buynt btn btn-outline-mybtn" data-id="{{ id }}" onclick="buythatproduct(this);">Buy Now</a>
-						{{/if}}
-					</div>
-				</div> 
-			</div>
-		</div>
-	</script>
 	
 </head>
 <body class="js app">
