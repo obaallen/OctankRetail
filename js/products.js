@@ -5,24 +5,24 @@ import { createOrder } from "./graphql/mutations";
 import { listProducts } from "./graphql/queries";
 
 Amplify.configure(awsconfig);
-async function createNewOrder() {
+async function createNewOrder(prodt, qtyo) {
   const order = {
     userId: "value1", 
     order: {
       products: {
-        productId: "df123", 
-        quantity: 30
+        productId: prodt, 
+        quantity: qtyo
       }
     }
   };
 
-  return await API.graphql(graphqlOperation(createOrder, { input: order }));
+  return await API.graphql(graphqlOperation(createOrder, order));
+  // return await API.graphql({ query: createOrder, variables: { input: product }});
 }
 
 async function listAllProducts() {
   var prodData = await API.graphql({ query: listProducts });
   const data = prodData["data"]["listProducts"]
-  console.log(data)
 
   for (const product_result of data) {
       var num, inventoryupdate
@@ -30,24 +30,45 @@ async function listAllProducts() {
         num = product_result["QtyinStock"];
         inventoryupdate = num + " items left!"
       } else {
-        num = null;
+        num = product_result["QtyinStock"];
         inventoryupdate = "Sold Out!"
       }
-      console.log(product_result); 
     
       let title = product_result["Productname"]
       let description = product_result["Productname"]
       let price = product_result["Price"]
       let image = "images/"+product_result["productid"]+".png"
       let id = product_result["productid"]
-      let inventory = num
 
-      document.querySelector('#products').innerHTML += '<div class="col-md-3"><div class="single-product"><div class="product-img"><a href="product-details.html"><img class="default-img" src="'+image+'" alt="#"><img class="hover-img" src="'+image+'" alt="#"></a><div class="button-head"><div class="product-action-2"><a title="Add to cart" href="#">'+inventoryupdate+'</a></div></div></div><div class="product-content"><h4><a href="">'+title+'</a></h4><p><a href="">'+description+'</a></p><div class="product-price"><span>$'+price+'</span><br><br><a href="" class="buynt btn btn-outline-mybtn" data-id="{{'+id+'}}" onclick="buythatproduct(this);">Buy Now</a></div></div></div></div>'
+      document.querySelector('#products').innerHTML += '<div class="col-md-3"><div class="single-product"><div class="product-img"><a href="product-details.html"><img class="default-img" src="'+image+'" alt="#"><img class="hover-img" src="'+image+'" alt="#"></a><div class="button-head"><div class="product-action-2"><a title="Add to cart" href="#">'+inventoryupdate+'</a></div></div></div><div class="product-content"><h4><a href="">'+title+'</a></h4><p><a href="">'+description+'</a></p><div class="product-price"><span>$'+price+'</span><br><br><button class="buynt btn btn-outline-mybtn" data-id="'+id+'" data-num="'+num+'">Buy Now</button></div></div></div></div>'
   }
-  request.send();
 }
 
 listAllProducts()
 
+// Set links up to save job for user.
+window.addEventListener('DOMContentLoaded', (event) => {
+  setTimeout(
+  document.querySelectorAll('.buynt').forEach(link => {
+    link.onclick = () => {
+        const data_id = link.dataset.id;
+        const data_num = link.dataset.num;
 
+        if (data_num > 0){
+          var qtu = prompt("Please enter the quantity you want to order for:", "10");
+          if (qtu !== null || person !== ""){
+            alert("You are ordering "+qtu+" items of "+data_id)
+            const testcall = createNewOrder(data_id, qtu)
+            console.log(testcall)
+            alert("Order Completed")
+          }
+        } else {
+          alert("Sorry, this item is soldout!")
+        }
+        
+        // return false;
+    };
+  }), 2000);
+});
 
+console.log("test")
