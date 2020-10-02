@@ -7,7 +7,7 @@ import { listProducts } from "./graphql/queries";
 Amplify.configure(awsconfig);
 async function createNewOrder(prodt, qtyo) {
   const order = {
-    userId: "value1", 
+    userId: "value2", 
     order: {
       products: {
         productId: prodt, 
@@ -19,7 +19,6 @@ async function createNewOrder(prodt, qtyo) {
   const ordermsg =  ordercall["data"]["createOrder"]["message"]
   const orderstatus = ordercall["data"]["createOrder"]["order"]["status"]
   const neworderid = ordercall["data"]["createOrder"]["order"]["orderId"]
-  console.log(ordercall)
   alert(ordermsg+". Your order is "+orderstatus+". ID: "+neworderid)
   location.reload();
 }
@@ -52,8 +51,6 @@ async function listAllProducts() {
 listAllProducts()
 
 // Set links up to save job for user.
-//window.addEventListener('DOMContentLoaded', (event) => {
-  //setTimeout(
 function checkbuttons() {
   document.querySelectorAll('.buynt').forEach(link => {
     link.onclick = () => {
@@ -69,8 +66,6 @@ function checkbuttons() {
         } else {
           alert("Sorry, this item is soldout!")
         }
-        
-        // return false;
     };
-  });//, 6000);
+  });
 };
