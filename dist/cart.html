@@ -56,17 +56,13 @@
 			<div class="middle-inner">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-10">
+						<div class="col-md-6">
 							<!-- Logo -->
 							<div class="logo">
 								<a href="index.html"><h1>Octank Ecommerce</h1></a> 
 							</div>
 							<!--/ End Logo -->
-						</div>
-						<div class="col-md-2">
-							<div>
-								<a href="cart.html"><button class="btn">Go to cart</button></a> 
-							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -77,7 +73,22 @@
 		<!-- Product Style -->
 		<section class="product-area section app-body">
 			<div class="container">
-				<div class="row" id="products">
+				<div id="cart">
+					<div class="row">
+						<div class="col-md-3">
+							<a href="product-details.html"><img class="default-img" src="http://localhost:8080/images/df124.png" alt="#"><img class="hover-img" src="'+image+'" alt="#"></a>
+						</div>
+						<div class="col-md-3">
+							<div class="product-content"><h4><a href="">'+title+'</a></h4><p><a href="">'+description+'</a></p><div class="product-price"><span>$'+price+'</span></div></div><br>
+						</div>
+						<div class="col-md-6">
+							<div class="button-head"><div class="product-action-2"><a title="Add to cart" href="#">'+inventoryupdate+'</a></div></div>
+						</div>
+					</div>
+					<hr>
+				</div>
+				<div>
+					<br><br><button class="buynt btn btn-outline-mybtn" data-id="'+id+'" data-num="'+num+'">Place Order</button>
 				</div>
 			</div>
 		</section>

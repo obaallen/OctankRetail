@@ -24,7 +24,8 @@ module.exports = {
     },
     plugins: [
         new CopyWebpackPlugin({
-            patterns: ['index.html']
+            patterns: ['index.html'],
+            patterns: ['cart.html']
         }),
         new webpack.HotModuleReplacementPlugin()
     ]

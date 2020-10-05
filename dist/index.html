@@ -56,13 +56,17 @@
 			<div class="middle-inner">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-10">
 							<!-- Logo -->
 							<div class="logo">
-								<a href="index.html"><h2>Octank Ecommerce</h2></a> 
+								<a href="index.html"><h1>Octank Ecommerce</h1></a> 
 							</div>
 							<!--/ End Logo -->
-							
+						</div>
+						<div class="col-md-2">
+							<div>
+								<a href="cart.html"><button class="btn">Go to cart</button></a> 
+							</div>
 						</div>
 					</div>
 				</div>
@@ -121,43 +125,5 @@
 	<!-- Products JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 	<script src="js/products.js"></script>
-	<script>
-		// function checkinventory(mi) {
-		// 	url = 'https://xfyws8r1e6.execute-api.us-east-1.amazonaws.com/prod/listItems'
-		// 	var products = []
-		// 	d = mi.getAttribute("data-id");
-		// 	const request = new XMLHttpRequest();
-		// 	request.open('GET', url);
-		// 	request.onload = () => {
-		// 		var data1 = JSON.parse(request.responseText);
-		// 		var data2 = JSON.stringify(eval("(" + data1["items"] + ")"));
-		// 		const data = JSON.parse(data2);
-			
-		// 		for (i = 0; i < 5; i++) {
-		// 			product_result = data[i]
-					
-		// 			if (product_result["GoodId"] = d) {
-		// 				if (product_result["numInStock"] = 0) {
-		// 					alert("Sorry, we are sold out on that item.");
-		// 				};
-		// 			};
-		// 		};
-		// 		buythatproduct(d)
-		// 	};
-		// 	request.send();
-		// };
-	
-		function buythatproduct(d) {
-			id = d.getAttribute("data-id");
-			
-			// var data = '{"ItemId": '+id+'}';
-			
-			// const data_id = link.dataset.id;
-			var person = prompt("Please enter the quantity you want to order for:", "10");
-			alert("You are ordering "+person+" items of "+id)
-			return false;
-		};
-
-	</script>
 </body>
 </html>
